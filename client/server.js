@@ -13,9 +13,8 @@ app
 
     if (!dev) {
       server.use(
-        "/api",
         createProxyMiddleware({
-          target: "https://king-prawn-app-aays3.ondigitalocean.app",
+          target: "https://squid-app-xbx74.ondigitalocean.app/api",
           changeOrigin: true,
         })
       );
@@ -27,7 +26,7 @@ app
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> Ready on https://king-prawn-app-aays3.ondigitalocean.app");
+      console.log("> Ready on https://squid-app-xbx74.ondigitalocean.app/api");
     });
   })
   .catch((err) => {
