@@ -20,7 +20,7 @@ app
       );
     }
 
-    server.all("*", (req, res) => {
+    server.all("https://trial-nine-indol.vercel.app", (req, res) => {
       return handle(req, res);
     });
 
