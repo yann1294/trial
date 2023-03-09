@@ -8,12 +8,12 @@ const handle = app.getRequestHandler();
 
 const csrfMiddleware = async (req, res, next) => {
   try {
-    const response = await fetch('hhttps://squid-app-xbx74.ondigitalocean.app/api/csrf-token', { credentials: 'include' });
+    const response = await fetch('https://108e-165-232-125-166.ngrok.io/api/csrf-token', { credentials: 'include' });
     const { csrfToken } = await response.json();
     req.headers['x-csrf-token'] = csrfToken;
 
     // Set the Access-Control-Allow-Origin header to the specific origin that is allowed to access the resource
-    res.setHeader('Access-Control-Allow-Origin', 'https://trial-nine-indol.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://trial-umber.vercel.app');
 
     next();
   } catch (error) {
@@ -29,19 +29,19 @@ app
     if (!dev) {
       server.use(
         createProxyMiddleware({
-          target: "https://40c5-165-232-125-166.ngrok.io/api",
+          target: "https://108e-165-232-125-166.ngrok.io/api",
           changeOrigin: true,
         })
       );
     }
 
-    server.all("https://trial-nine-indol.vercel.app", (req, res) => {
+    server.all("https://trial-umber.vercel.app", (req, res) => {
       return handle(req, res);
     });
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> Ready on https://40c5-165-232-125-166.ngrok.io/api");
+      console.log("> Ready on https://108e-165-232-125-166.ngrok.io/api");
     });
   })
   .catch((err) => {
