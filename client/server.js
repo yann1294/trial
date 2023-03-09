@@ -8,7 +8,11 @@ const handle = app.getRequestHandler();
 
 const csrfMiddleware = async (req, res, next) => {
   try {
-    const response = await fetch('https://sea-lion-app-2mk4p.ondigitalocean.app/api/csrf-token', { credentials: 'include' });
+    const response = await fetch('https://sea-lion-app-2mk4p.ondigitalocean.app/api/csrf-token', { credentials: 'include' })
+                            .then(response => response.json())
+                            .then(data => {
+                                  sessionStorage.setItem('csrfToken', data.csrfToken);
+                            });
     const { csrfToken } = await response.json();
     req.headers['x-csrf-token'] = csrfToken;
 
