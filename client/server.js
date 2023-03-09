@@ -8,7 +8,7 @@ const handle = app.getRequestHandler();
 
 const csrfMiddleware = async (req, res, next) => {
   try {
-    const response = await fetch('https://108e-165-232-125-166.ngrok.io/api/csrf-token', { credentials: 'include' });
+    const response = await fetch('https://sea-lion-app-2mk4p.ondigitalocean.app/api/csrf-token', { credentials: 'include' });
     const { csrfToken } = await response.json();
     req.headers['x-csrf-token'] = csrfToken;
 
@@ -29,7 +29,7 @@ app
     if (!dev) {
       server.use(
         createProxyMiddleware({
-          target: "https://108e-165-232-125-166.ngrok.io/api",
+          target: "https://sea-lion-app-2mk4p.ondigitalocean.app/api",
           changeOrigin: true,
         })
       );
@@ -41,7 +41,7 @@ app
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> Ready on https://108e-165-232-125-166.ngrok.io/api");
+      console.log("> Ready on https://sea-lion-app-2mk4p.ondigitalocean.app/api");
     });
   })
   .catch((err) => {
