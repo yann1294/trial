@@ -29,7 +29,7 @@ app
     if (!dev) {
       server.use(
         createProxyMiddleware({
-          target: "https://squid-app-xbx74.ondigitalocean.app/api",
+          target: "https://40c5-165-232-125-166.ngrok.io/api",
           changeOrigin: true,
         })
       );
@@ -41,7 +41,7 @@ app
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> Ready on https://squid-app-xbx74.ondigitalocean.app/api");
+      console.log("> Ready on https://40c5-165-232-125-166.ngrok.io/api");
     });
   })
   .catch((err) => {
