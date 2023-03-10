@@ -8,7 +8,7 @@ const handle = app.getRequestHandler();
 
 const csrfMiddleware = async (req, res, next) => {
   try {
-    const response = await fetch('https://sea-lion-app-2mk4p.ondigitalocean.app/api/csrf-token', { credentials: 'include' })
+    const response = await fetch('https://youandus-server.vercel.app/api/csrf-token', { credentials: 'include' })
                             .then(response => response.json())
                             .then(data => {
                                   sessionStorage.setItem('csrfToken', data.csrfToken);
@@ -17,7 +17,7 @@ const csrfMiddleware = async (req, res, next) => {
     req.headers['x-csrf-token'] = csrfToken;
 
     // Set the Access-Control-Allow-Origin header to the specific origin that is allowed to access the resource
-    res.setHeader('Access-Control-Allow-Origin', 'https://trial-umber.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://youandus-server.vercel.app');
 
     next();
   } catch (error) {
@@ -33,7 +33,7 @@ app
     if (!dev) {
       server.use(
         createProxyMiddleware({
-          target: "https://sea-lion-app-2mk4p.ondigitalocean.app/api",
+          target: "https://youandus-server.vercel.app/api",
           changeOrigin: true,
         })
       );
@@ -45,7 +45,7 @@ app
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> Ready on https://sea-lion-app-2mk4p.ondigitalocean.app/api");
+      console.log("> Ready on https://youandus-server.vercel.app/api");
     });
   })
   .catch((err) => {
