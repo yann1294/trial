@@ -8,16 +8,12 @@ const handle = app.getRequestHandler();
 
 const csrfMiddleware = async (req, res, next) => {
   try {
-    const response = await fetch('https://sea-lion-app-2mk4p.ondigitalocean.app/api/csrf-token', { credentials: 'include' })
-                            .then(response => response.json())
-                            .then(data => {
-                                  sessionStorage.setItem('csrfToken', data.csrfToken);
-                            });
+    const response = await fetch('https://monkfish-app-i3xii.ondigitalocean.app/api/csrf-token', { credentials: 'include' });
     const { csrfToken } = await response.json();
     req.headers['x-csrf-token'] = csrfToken;
 
     // Set the Access-Control-Allow-Origin header to the specific origin that is allowed to access the resource
-    res.setHeader('Access-Control-Allow-Origin', 'https://sea-lion-app-2mk4p.ondigitalocean.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://trial-nine-indol.vercel.app');
 
     next();
   } catch (error) {
@@ -33,19 +29,19 @@ app
     if (!dev) {
       server.use(
         createProxyMiddleware({
-          target: "https://sea-lion-app-2mk4p.ondigitalocean.app/api",
+          target: "https://monkfish-app-i3xii.ondigitalocean.app/api",
           changeOrigin: true,
         })
       );
     }
 
-    server.all("https://trial-umber.vercel.app", (req, res) => {
+    server.all("https://trial-nine-indol.vercel.app", (req, res) => {
       return handle(req, res);
     });
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("> Ready on https://sea-lion-app-2mk4p.ondigitalocean.app/api");
+      console.log("> Ready on https://monkfish-app-i3xii.ondigitalocean.app/api");
     });
   })
   .catch((err) => {
