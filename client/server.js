@@ -13,7 +13,7 @@ const csrfMiddleware = async (req, res, next) => {
     req.headers['x-csrf-token'] = csrfToken;
 
     // Set the Access-Control-Allow-Origin header to the specific origin that is allowed to access the resource
-    res.setHeader('Access-Control-Allow-Origin', 'https://trial-nine-indol.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', 'hhttps://trial-umber.vercel.app');
 
     next();
   } catch (error) {
@@ -35,7 +35,7 @@ app
       );
     }
 
-    server.all("https://trial-nine-indol.vercel.app", (req, res) => {
+    server.all("https://trial-umber.vercel.app", (req, res) => {
       return handle(req, res);
     });
 
